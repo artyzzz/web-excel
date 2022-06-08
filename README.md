@@ -1,4 +1,4 @@
-# Currency Converter 
+# Web Excel
 
 ## Proskurin Artem, VSU, Information Security, course 2
 
@@ -13,7 +13,6 @@ xlsx
 xlsm 
 xltx
 xltm
-
 ```
 
 ## Environment
@@ -23,4 +22,4 @@ http://127.0.0.1:5000 - после запуска приложения, необ
 
 ## Application
 
-![](../../Desktop/uzGYXsbp.jpg)
+![](uzGYXsbp.jpg)
