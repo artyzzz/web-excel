@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif, serif;
+            font-size: 14px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th {
+            background: #AFCDE7;
+            color: white;
+            padding: 10px 20px;
+        }
+        th, td {
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            border-color: white;
+        }
+        td {
+            background: #D8E6F3;
+        }
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <table>
+            <tr>
+                {% for j in range(excel.last_col) %}
+                    {% if excel.table[0][j].rowspan != 0 and excel.table[0][j].colspan != 0 %}
+
+                        <th rowspan={{ excel.table[0][j].rowspan }}, colspan={{ excel.table[0][j].colspan }}, style="text-align: center">{{ excel.table[0][j].value }}</th>
+
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            {%  for i in range(1, excel.last_row)  %}
+                <tr>
+                    {% for j in range(excel.last_col) %}
+                        {% if excel.table[i][j].rowspan != 0 and excel.table[i][j].colspan != 0 %}
+                            {% if j == 0 %}
+                                <td rowspan={{ excel.table[i][j].rowspan }}, colspan={{ excel.table[i][j].colspan }}, style="text-align: left">{{ excel.table[i][j].value }}</td>
+                            {% else%}
+                                <td rowspan={{ excel.table[i][j].rowspan }}, colspan={{ excel.table[i][j].colspan }}, style="text-align: center">{{ excel.table[i][j].value }}</td>
+                            {% endif %}
+
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
